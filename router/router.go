@@ -15,8 +15,9 @@ func InitRouter(s *win.Server) {
 	// must login
 	g := api.Group("", middlewares.LoginRequired)
 
-	g.AddHandler("error_code", handlers.ErrorCode)
+	g.AddHandler("errorCode", handlers.ErrorCode)
 	g.AddHandler("logout", handlers.Logout)
+	g.AddHandler("getAuthInfo", handlers.GetAuthInfo)
 
 	g.AddHandler("admin/list", handlers.AdminList)
 	g.AddHandler("admin/create", handlers.AdminCreate)

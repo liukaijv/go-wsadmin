@@ -46,6 +46,10 @@ func (c *Conn) start() {
 	}
 }
 
+func (c *Conn) ID() uint32 {
+	return c.id
+}
+
 func (c *Conn) Close() {
 	defer log.Printf("[win-debug]: conn %d closed", c.id)
 	c.mu.Lock()

@@ -82,6 +82,21 @@ func (c *Context) NotifyError(code int, msg string, data ...interface{}) {
 	c.sendMessage(resp)
 }
 
+func (c *Context) Broadcast(method string, data interface{}, except ...uint32) {
+	resp := Response{
+		Method: method,
+		Error:  nil,
+	}
+	resp.setResult(data)
+	for _, conn := range c.Conn.Server.clients {
+		for _, id := range except {
+			if id != conn.ID() {
+				conn.SendMessage(resp)
+			}
+		}
+	}
+}
+
 // 取值
 func (c *Context) Get(key string) (interface{}, error) {
 	return c.Conn.get(key)

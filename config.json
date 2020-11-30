@@ -1,0 +1,6 @@
+{
+  "db_dsn": "root:123456@tcp(127.0.0.1:3306)/wsadmin?charset=utf8mb4&parseTime=True&loc=Local",
+  "super_admin": "admin",
+  "super_admin_password": "admin",
+  "debug_mode": true
+}

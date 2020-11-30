@@ -1,7 +1,6 @@
 package win
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -29,7 +28,6 @@ func (g *Group) Use(middleware ...MiddlewareFunc) {
 
 func (g *Group) AddHandler(name string, h HandlerFunc, middleware ...MiddlewareFunc) {
 	path := g.getPrefix() + "/" + name
-	fmt.Println(path)
 	path = strings.ReplaceAll(path, "//", "/")
 	m := make([]MiddlewareFunc, len(g.middleware)+len(middleware))
 	m = append(m, g.middleware...)
